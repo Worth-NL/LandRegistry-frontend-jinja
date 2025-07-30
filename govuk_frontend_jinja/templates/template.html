@@ -3,7 +3,7 @@
 {% from "govuk_frontend_jinja/components/header/macro.html" import govukHeader -%}
 {% from "govuk_frontend_jinja/components/footer/macro.html" import govukFooter -%}
 <!DOCTYPE html>
-<html lang="{{ htmlLang | default('en', true) }}" class="govuk-template {%- if htmlClasses %} {{ htmlClasses }}{% endif %}">
+<html lang="{{ htmlLang | default('en', true) }}" class="govuk-template {%- if htmlClasses %} {{ htmlClasses }}{% endif %} rhc-theme">
   <head>
     <meta charset="utf-8">
     <title {%- if pageTitleLang %} lang="{{ pageTitleLang }}"{% endif %}>{% block pageTitle %}GOV.UK - The best place to find government services and information{% endblock %}</title>
