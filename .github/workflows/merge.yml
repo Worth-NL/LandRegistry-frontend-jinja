@@ -1,0 +1,26 @@
+name: Tag and release
+
+on:
+  workflow_run:
+    workflows:
+      - "Python package"
+    branches:
+      - main
+    types:
+      - completed
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Set tag
+        id: set-tag
+        run: echo "TAG=$(date +%Y%m%d).${{ github.run_number }}" >> $GITHUB_ENV
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.TAG }}
+          make_latest: true
+          token: ${{ secrets.RELEASE_TOKEN }}
+          generate_release_notes: true  
