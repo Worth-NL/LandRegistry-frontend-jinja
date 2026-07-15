@@ -120,6 +120,14 @@
         }
     },
     "develop": {
+        "backports.tarfile": {
+            "hashes": [
+                "sha256:77e284d754527b01fb1e6fa8a1afe577858ebe4e9dad8919e34c862cb399bc34",
+                "sha256:d75e02c268746e1b8144c278978b6e98e85de6ad16f8e4b0844a154557eca991"
+            ],
+            "markers": "python_version >= '3.8'",
+            "version": "==1.2.0"
+        },
         "blinker": {
             "hashes": [
                 "sha256:b4ce2265a7abece45e7cc896e98dbebe6cead56bcf805a3d23136d145f5445bf",
@@ -501,6 +509,14 @@
             ],
             "markers": "python_version >= '3.9'",
             "version": "==3.18"
+        },
+        "importlib-metadata": {
+            "hashes": [
+                "sha256:2d21d1cc5a017bd0559e36150c21c830ab1dc304dedd1b7ea85d20f45ef3edd7",
+                "sha256:a4f57ab599e6a2e3016d7595cfd72eb4661a5106e787a95bcc90c7105b831efc"
+            ],
+            "markers": "python_version >= '3.10'",
+            "version": "==9.0.0"
         },
         "itsdangerous": {
             "hashes": [
@@ -1037,6 +1053,14 @@
             "markers": "python_version >= '3.9'",
             "version": "==6.2.0"
         },
+        "typing-extensions": {
+            "hashes": [
+                "sha256:481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+                "sha256:dc983d19a509c94dba722ee6abd33940f7c05a89e243c47e907eb4db6f1a43e5"
+            ],
+            "markers": "python_version >= '3.9'",
+            "version": "==4.16.0"
+        },
         "urllib3": {
             "hashes": [
                 "sha256:231e0ec3b63ceb14667c67be60f2f2c40a518cb38b03af60abc813da26505f4c",
@@ -1052,6 +1076,14 @@
             ],
             "markers": "python_version >= '3.9'",
             "version": "==3.1.8"
+        },
+        "zipp": {
+            "hashes": [
+                "sha256:25ad4e16390cd314347dd8f1de67a2ac538ae658ed4ab9db16029c07c188e97f",
+                "sha256:4cb57381f544315db7688e976e922a2b18cdb513d21cc194eb42232ba2a3e602"
+            ],
+            "markers": "python_version >= '3.10'",
+            "version": "==4.1.0"
         }
     }
 }
