@@ -51,11 +51,21 @@
             {% endif %}
           {% endif %}
 
+          {#- unlinkUkLicensing keeps every licence line exactly as it reads
+          here, but renders the two nationalarchives.gov.uk references as plain
+          text instead of anchors. Apps whose URLs carry a secret -- e.g.
+          document-download-frontend, where the path contains the document
+          decryption key -- must not offer an outbound link at all, so the URL
+          cannot reach a third party's access logs via the Referer header.
+          Callers that omit the flag keep the current markup unchanged. #}
           <div class="govuk-footer__meta-custom">
             <span class="govuk-footer__licence-description">
               {% if params.contentLicence and (params.contentLicence.html or params.contentLicence.text) %}
                 {{ params.contentLicence.html | safe | trim | indent(10)
                   if params.contentLicence.html else params.contentLicence.text }}
+              {% elif params.unlinkUkLicensing %}
+                Bevat overheidsinformatie die is gelicentieerd onder de
+                Open Government Licence v3.0.
               {% else %}
                 Bevat overheidsinformatie die is gelicentieerd onder de
                 <a
@@ -83,16 +93,25 @@
 
         </div>
         <div class="govuk-footer__meta-item">
-          <a
-            class="govuk-footer__link govuk-footer__copyright-logo"
-            href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
-          >
+          {%- set _copyright %}
             {% if params.copyright and (params.copyright.html or params.copyright.text) %}
               {{ params.copyright.html | safe | trim | indent(10) if params.copyright.html else params.copyright.text }}
             {% else %}
               © Crown copyright
             {% endif %}
+          {% endset %}
+          {% if params.unlinkUkLicensing %}
+          <span class="govuk-footer__copyright-logo">
+            {{- _copyright -}}
+          </span>
+          {% else %}
+          <a
+            class="govuk-footer__link govuk-footer__copyright-logo"
+            href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
+          >
+            {{- _copyright -}}
           </a>
+          {% endif %}
         </div>
       </div>
     </div>

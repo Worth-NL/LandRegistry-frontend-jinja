@@ -27,20 +27,24 @@
   govukAttributes(params.attributes) }}>
   <div class="govuk-header__container {{ params.containerClasses | default(" govuk-width-container", true) }}">
     <div class="govuk-header__logo">
-      <a href="{{ params.homepageUrl | default(" /", true) }}" class="govuk-header__link govuk-header__link--homepage">
-        {#- The SVG needs `focusable="false"` so that Internet Explorer does
-        not treat it as an interactive element - without this it will be
-        'focusable' when using the keyboard to navigate.
-
-        We use a single compound path for the logo to prevent subpixel rounding
-        shifting different elements unevenly relative to one another. #}
-
+      {#- Omit the anchor entirely when no homepageUrl is given, so apps with no
+      meaningful homepage (e.g. a citizen-facing document download reached from
+      an email link) can render the product name as plain branding rather than
+      linking to a "/" that does not exist. Callers that pass homepageUrl are
+      unaffected. #}
+      {% if params.homepageUrl %}
+      <a href="{{ params.homepageUrl }}" class="govuk-header__link govuk-header__link--homepage">
         {% if (params.productName) %}
         <span class="govuk-header__product-name">
           {{ params.productName }}
         </span>
         {% endif %}
       </a>
+      {% elif (params.productName) %}
+      <span class="govuk-header__product-name">
+        {{ params.productName }}
+      </span>
+      {% endif %}
     </div>
     {% if params.serviceName or params.navigation | length %}
     <div class="govuk-header__content">
