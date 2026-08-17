@@ -3,7 +3,7 @@ requires = ["setuptools >= 77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "govuk-frontend-jinja"
+name = "notifynl-frontend-jinja"
 version = "4.0.0"
 dependencies = ["jinja2!=3.0.0,!=3.0.1"]
 requires-python = ">=3.10"
@@ -12,9 +12,10 @@ authors = [
     { name = "Andy Mantell" },
 ]
 maintainers = [
-    { name = "Matt Shaw", email = "matthew.shaw@landregistry.gov.uk" },
+    { name = "Pier-Angelo Gaetani", email = "pgaetani@worth.systems" },
+    { name = "Rodrigo Abril", email = "rabril@worth.systems" }
 ]
-description = "GOV.UK Frontend Jinja Macros"
+description = "NotifyNL Frontend Jinja Macros"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
@@ -43,9 +44,9 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/LandRegistry/govuk-frontend-jinja"
-Issues = "https://github.com/LandRegistry/govuk-frontend-jinja/issues"
-Changelog = "https://github.com/LandRegistry/govuk-frontend-jinja/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/Worth-NL/LandRegistry-frontend-jinja"
+Issues = "https://github.com/Worth-NL/LandRegistry-frontend-jinja/issues"
+Changelog = "https://github.com/Worth-NL/LandRegistry-frontend-jinja/blob/main/CHANGELOG.md"
 
 [tool.setuptools.packages.find]
 exclude = ["tests"]
