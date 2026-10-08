@@ -1,26 +1,29 @@
-name: Tag and release
+name: Merge
 
 on:
-  workflow_run:
-    workflows:
-      - "Python package"
+  push:
     branches:
       - main
-    types:
-      - completed
+
+concurrency:
+  group: ${{ github.workflow }}.${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   release:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Set tag
         id: set-tag
-        run: echo "TAG=$(date +%Y%m%d).${{ github.run_number }}" >> $GITHUB_ENV
+        run: echo "tag=$(date +%Y%m%d).${{ github.run_number }}" >> $GITHUB_OUTPUT
 
       - uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ env.TAG }}
+          tag_name: ${{ steps.set-tag.outputs.tag }}
           make_latest: true
           token: ${{ secrets.RELEASE_TOKEN }}
-          generate_release_notes: true  
+          generate_release_notes: true
